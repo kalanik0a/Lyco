@@ -1,0 +1,19 @@
+﻿[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lyco-image-mosaic"
+version = "1.0.0"
+description = "Compose and edit image mosaics via YAML with a PyQt GUI."
+readme = "README.md"
+license = {text = "GNU General Public License v3.0"}
+requires-python = ">=3.10"
+dependencies = [
+  "Pillow",
+  "PyYAML",
+  "PyQt5",
+]
+
+[project.scripts]
+lyco = "Lyco:main"
