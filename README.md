@@ -2,6 +2,9 @@
 
 Lyco Image Mosaic lets you compose a transparent wallpaper from a YAML layout file and edit layouts visually with a PyQt GUI.
 
+![A screenshot of Lyco Image Mosaic](img/screenshot.png)
+
+
 ## Install
 
 ```powershell
