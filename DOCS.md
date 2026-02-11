@@ -1,4 +1,4 @@
-# Lyco Python Framework - Docs
+﻿# Lyco Python Framework - Docs
 
 This document lists all supported ways to use, invoke, install, and test the Lyco Python Framework and its Hello-world example app.
 
@@ -14,7 +14,7 @@ This document lists all supported ways to use, invoke, install, and test the Lyc
 
 1. Run `python tools/setup_env.py` to create a `.env` for your OS/CI.
 2. Rename the package in `pyproject.toml` and update entry points.
-3. Replace `src/lyco_image_mosaic` with your app module.
+3. Replace `src/lyco` with your app module.
 4. Keep `tools/`, `.github/`, `.gitlab-ci.yml`, and `Makefile` as your baseline workflow.
 
 ## Invocation
@@ -36,15 +36,15 @@ python Lyco.py gui -c layout.yml
 Module (if installed):
 
 ```powershell
-python -m lyco_image_mosaic compose -c layout.yml -o wallpaper.png
-python -m lyco_image_mosaic gui -c layout.yml
+python -m lyco compose -c layout.yml -o wallpaper.png
+python -m lyco gui -c layout.yml
 ```
 
 If running from the repo without installation, set `PYTHONPATH=src`:
 
 ```powershell
 $env:PYTHONPATH="src"
-python -m lyco_image_mosaic --help
+python -m lyco --help
 ```
 
 ## Installation
@@ -112,7 +112,7 @@ and logs when the `venv` module is unavailable (common in minimal containers).
 
 The framework exposes a small app config file for swapping the example module:
 
-- `src/lyco_image_mosaic/app_config.json` defines the module and callable to invoke.
+- `src/lyco/app_config.json` defines the module and callable to invoke.
 - Override with `LYCO_APP_CONFIG=/path/to/your/app_config.json`.
 
 This allows a forked project to change one file to point at the new module
@@ -256,3 +256,4 @@ Makefile targets:
 
 Windows note: `make` may not be installed by default; use VS Code tasks or direct
 Python commands if needed.
+

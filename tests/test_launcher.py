@@ -1,4 +1,4 @@
-"""Tests for the binary-first launcher behavior."""
+﻿"""Tests for the binary-first launcher behavior."""
 
 import sys
 import tempfile
@@ -12,7 +12,7 @@ SRC = ROOT / "src"
 if SRC.exists():
     sys.path.insert(0, str(SRC))
 
-from lyco_image_mosaic import launcher  # noqa: E402
+from lyco import launcher  # noqa: E402
 
 
 class TestLauncher(unittest.TestCase):
@@ -39,3 +39,4 @@ class TestLauncher(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+

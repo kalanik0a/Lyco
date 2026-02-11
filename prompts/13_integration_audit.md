@@ -1,4 +1,4 @@
-# Step 13: Integration And Configuration Audit (Whole Repo)
+﻿# Step 13: Integration And Configuration Audit (Whole Repo)
 
 Perform a holistic audit of the repository to ensure every integration and configuration path is correct, consistent, and transplant-ready. Use `CONTEXT.md` and `STATE.json` as the canonical map.
 
@@ -9,8 +9,8 @@ Perform a holistic audit of the repository to ensure every integration and confi
 
 ## 2. Packaging + Entry Points
 - `pyproject.toml`: name, version, description, dependencies, scripts, package-data.
-- `src/lyco_image_mosaic/launcher.py`: compiled-first logic and fallback behavior.
-- `src/lyco_image_mosaic/app_config.json`: module/callable swap for framework forks.
+- `src/lyco/launcher.py`: compiled-first logic and fallback behavior.
+- `src/lyco/app_config.json`: module/callable swap for framework forks.
 - Ensure `README.md`/`DOCS.md` align with package metadata and install commands.
 
 ## 3. Tooling + Environment
@@ -37,3 +37,4 @@ Perform a holistic audit of the repository to ensure every integration and confi
 ## 7. Report Findings
 - If mismatches are found, note exactly which file/line and propose a fix.
 - Update `STATE.json` and docs when changes are applied.
+

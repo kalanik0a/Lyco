@@ -1,4 +1,4 @@
-"""End-to-end tests for installation, invocation, and compile flows."""
+﻿"""End-to-end tests for installation, invocation, and compile flows."""
 
 from __future__ import annotations
 
@@ -45,7 +45,7 @@ class TestE2EInvocations(unittest.TestCase):
         """Module invocation should work with PYTHONPATH=src."""
         env = os.environ.copy()
         env["PYTHONPATH"] = str(ROOT / "src")
-        result = self._run([sys.executable, "-m", "lyco_image_mosaic", "--help"], env=env)
+        result = self._run([sys.executable, "-m", "lyco", "--help"], env=env)
         self.assertEqual(result.returncode, 0, msg=result.stderr)
         self.assertTrue(
             "Lyco Python Framework" in result.stdout
@@ -80,7 +80,7 @@ class TestE2EInvocations(unittest.TestCase):
             env = os.environ.copy()
             env["PYTHONPATH"] = str(ROOT / "src")
             result = self._run(
-                [sys.executable, "-m", "lyco_image_mosaic", "compose", "-c", str(layout), "-o", str(output)],
+                [sys.executable, "-m", "lyco", "compose", "-c", str(layout), "-o", str(output)],
                 env=env,
                 cwd=tmp_path,
             )
@@ -120,3 +120,4 @@ class TestE2ECompile(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+

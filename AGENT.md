@@ -1,4 +1,4 @@
-# Agent Guide
+﻿# Agent Guide
 
 This file consolidates project needs from `TASKS.md`, `CONTEXT.md`, and `STATE.json`.
 
@@ -20,13 +20,13 @@ This file consolidates project needs from `TASKS.md`, `CONTEXT.md`, and `STATE.j
 
 ## How To Run
 - Installed CLI: `lyco`
-- Module: `python -m lyco_image_mosaic`
+- Module: `python -m lyco`
 - Repo wrapper: `python Lyco.py`
 
 ## Key Files
-- Core CLI/GUI: `src/lyco_image_mosaic/cli.py`
-- Launcher: `src/lyco_image_mosaic/launcher.py`
-- Module entry: `src/lyco_image_mosaic/__main__.py`
+- Core CLI/GUI: `src/lyco/cli.py`
+- Launcher: `src/lyco/launcher.py`
+- Module entry: `src/lyco/__main__.py`
 - Build binary: `tools/build_binary.py`
 - Security checks: `tools/security_checks.py`
 - Post CI report: `tools/post_ci_cd_report.py`
@@ -91,3 +91,4 @@ Optional helpers: `powershell tools/run_semgrep_wsl.ps1`, `powershell tools/run_
 
 ## CI/CD Prompt Flow
 See `prompts/CI_CD_TASKS.md` and step prompts in `prompts/`.
+

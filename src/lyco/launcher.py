@@ -9,7 +9,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-from . import cli
+from . import cli  # pylint: disable=import-error,no-name-in-module
 
 
 def _compiled_binary_path() -> Path:
@@ -35,7 +35,7 @@ def main() -> None:
     if config_file.exists():
         try:
             data = json.loads(config_file.read_text(encoding="utf-8"))
-            module_path = data.get("module", "lyco_image_mosaic.cli")
+            module_path = data.get("module", "lyco.cli")
             callable_name = data.get("callable", "main")
             module = importlib.import_module(module_path)
             entry = getattr(module, callable_name)

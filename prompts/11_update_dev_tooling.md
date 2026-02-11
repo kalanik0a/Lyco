@@ -1,4 +1,4 @@
-# Step 11: Update Dev Tooling And Workspace Configs
+﻿# Step 11: Update Dev Tooling And Workspace Configs
 
 Update developer workflow files to reflect current project structure and commands:
 
@@ -11,7 +11,7 @@ Update developer workflow files to reflect current project structure and command
 - `Makefile`: ensure targets match tooling scripts and cache guard steps.
 - `TOOLING.md`: keep flags and cache logic accurate.
 - `tools/run_task.py` and `tools/setup_env.py`: ensure task runner and env setup stay aligned with CI/Makefile.
-- `src/lyco_image_mosaic/app_config.json`: ensure framework swap configuration stays in sync with docs.
+- `src/lyco/app_config.json`: ensure framework swap configuration stays in sync with docs.
 - Docs and state: update `README.md`, `DOCS.md`, `CONTEXT.md`, and `STATE.json` if any paths or commands change.
 
 Confirm tasks still match actual scripts:
@@ -21,3 +21,4 @@ Confirm tasks still match actual scripts:
 - `tools/security_checks.py`
 - `tools/generate_sbom.py`
 - `python -m unittest discover -s tests`
+

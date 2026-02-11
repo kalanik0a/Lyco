@@ -71,3 +71,5 @@ build/ci/
 *.sqlite
 *.db
 *.secrets.*
+# Commit message drafts
+PENDING-COMMIT.txt

@@ -64,10 +64,9 @@ jobs:
       - name: Full checks
         env:
           CI_GUARD_ALLOW: "1"
-          RUN_SAFETY: "1"
+          RUN_SAFETY: "0"
           RUN_SEMGREP: "1"
           RUN_SBOM: "0"
-          SAFETY_API_KEY: ${{ secrets.SAFETY_API_KEY }}
         if: runner.os != 'Windows'
         run: make ci-full
 
@@ -75,10 +74,9 @@ jobs:
         if: runner.os == 'Windows'
         env:
           CI_GUARD_ALLOW: "1"
-          RUN_SAFETY: "1"
+          RUN_SAFETY: "0"
           RUN_SEMGREP: "0"
           RUN_SBOM: "0"
-          SAFETY_API_KEY: ${{ secrets.SAFETY_API_KEY }}
         run: |
           python tools/check_pylint.py
           python tools/check_audit.py

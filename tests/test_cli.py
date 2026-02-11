@@ -1,4 +1,4 @@
-"""Tests for CLI helpers and compose workflow."""
+﻿"""Tests for CLI helpers and compose workflow."""
 
 import os
 import sys
@@ -12,7 +12,7 @@ SRC = ROOT / "src"
 if SRC.exists():
     sys.path.insert(0, str(SRC))
 
-from lyco_image_mosaic import cli  # noqa: E402
+from lyco import cli  # noqa: E402
 
 
 class TestParseResolution(unittest.TestCase):
@@ -99,3 +99,4 @@ class TestCompose(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+

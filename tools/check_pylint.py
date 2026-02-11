@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 import shutil
 import subprocess
 import sys
@@ -14,9 +15,17 @@ def main() -> int:
         print("Missing tool: pylint. Install with: python -m pip install pylint")
         return 2
 
-    cmd = ["pylint", "Lyco.py", "src"]
+    src_path = str(ROOT / "src")
+    cmd = [
+        "pylint",
+        f"--init-hook=import sys; sys.path.insert(0, r'{src_path}')",
+        "Lyco.py",
+        "src",
+    ]
     print("Running:", " ".join(cmd))
-    return subprocess.call(cmd, cwd=ROOT)
+    env = dict(**os.environ)
+    env["PYTHONPATH"] = src_path + os.pathsep + env.get("PYTHONPATH", "")
+    return subprocess.call(cmd, cwd=ROOT, env=env)
 
 
 if __name__ == "__main__":

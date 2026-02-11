@@ -1,4 +1,4 @@
-"""Build a compiled Lyco binary with Nuitka and bundle it into the package."""
+﻿"""Build a compiled Lyco binary with Nuitka and bundle it into the package."""
 
 from __future__ import annotations
 
@@ -17,7 +17,7 @@ def main() -> int:
         Process exit code. Zero indicates success.
     """
     root = Path(__file__).resolve().parents[1]
-    src = root / "src" / "lyco_image_mosaic" / "cli.py"
+    src = root / "src" / "lyco" / "cli.py"
     if not src.exists():
         print(f"Missing source: {src}")
         return 1
@@ -51,7 +51,7 @@ def main() -> int:
             print(f"Built binary not found in {out_dir}")
             return 1
 
-    bin_dir = root / "src" / "lyco_image_mosaic" / "bin"
+    bin_dir = root / "src" / "lyco" / "bin"
     bin_dir.mkdir(parents=True, exist_ok=True)
     target = bin_dir / exe_name
     shutil.copy2(built, target)
@@ -61,3 +61,4 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+

@@ -1,4 +1,4 @@
-"""Documentation smoke tests for README and DOCS."""
+﻿"""Documentation smoke tests for README and DOCS."""
 
 import unittest
 from pathlib import Path
@@ -27,8 +27,9 @@ class TestDocs(unittest.TestCase):
         self.assertIn("## Installation", text)
         self.assertIn("## Testing", text)
         self.assertIn("lyco compose", text)
-        self.assertIn("python -m lyco_image_mosaic", text)
+        self.assertIn("python -m lyco", text)
 
 
 if __name__ == "__main__":
     unittest.main()
+

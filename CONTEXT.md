@@ -1,4 +1,4 @@
-# Project Context
+﻿# Project Context
 
 This file is a quick-reference for contributors and reviewers. It summarizes the product purpose, how to run it, how it is packaged, and where to look for deeper documentation.
 
@@ -21,13 +21,13 @@ This file is a quick-reference for contributors and reviewers. It summarizes the
 
 ## How To Run
 - Installed CLI: `lyco` (prefers bundled compiled binary; falls back to Python).
-- Module: `python -m lyco_image_mosaic`.
+- Module: `python -m lyco`.
 - Repo wrapper: `python Lyco.py`.
 
 ## Primary Files
-- `src/lyco_image_mosaic/cli.py`: Core CLI and GUI implementation.
-- `src/lyco_image_mosaic/launcher.py`: Binary-first launcher.
-- `src/lyco_image_mosaic/__main__.py`: Module entry point.
+- `src/lyco/cli.py`: Core CLI and GUI implementation.
+- `src/lyco/launcher.py`: Binary-first launcher.
+- `src/lyco/__main__.py`: Module entry point.
 - `tools/build_binary.py`: Nuitka build helper.
 - `tools/security_checks.py`: Security pipeline checks (bandit, pip-audit, safety, semgrep).
 - `tools/run_semgrep_wsl.ps1`: Run semgrep via WSL on Windows.
@@ -71,7 +71,7 @@ This file is a quick-reference for contributors and reviewers. It summarizes the
 - Build system: `pyproject.toml` with `setuptools`.
 - Optional build tooling: `build`, `cibuildwheel`, `nuitka`, `twine`.
 - Optional security tooling: `bandit`, `pip-audit`, `safety`, `semgrep`.
-- Wheels may bundle a compiled binary in `src/lyco_image_mosaic/bin/`.
+- Wheels may bundle a compiled binary in `src/lyco/bin/`.
 - Dependencies are pinned in `requirements.txt`.
 - Developer tools are pinned in `requirements-dev.txt`.
 - Semgrep is pinned separately in `requirements-semgrep.txt`.
@@ -95,3 +95,4 @@ This file is a quick-reference for contributors and reviewers. It summarizes the
 - PyQt5 and compiled wheels are platform- and Python-version-specific.
 - `semgrep` is not supported on native Windows; use WSL or run in CI.
 Optional helpers: `powershell tools/run_semgrep_wsl.ps1`, `powershell tools/run_semgrep_docker.ps1`.
+

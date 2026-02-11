@@ -1,4 +1,4 @@
-[build-system]
+﻿[build-system]
 requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
@@ -16,7 +16,7 @@ dependencies = [
 ]
 
 [project.scripts]
-lyco = "lyco_image_mosaic.launcher:main"
+lyco = "lyco.launcher:main"
 
 [project.optional-dependencies]
 build = [
@@ -35,11 +35,11 @@ security = [
 
 [tool.setuptools]
 package-dir = {"" = "src"}
-packages = ["lyco_image_mosaic"]
+packages = ["lyco"]
 include-package-data = true
 
 [tool.setuptools.package-data]
-lyco_image_mosaic = ["bin/*", "app_config.json"]
+lyco = ["bin/*", "app_config.json"]
 
 [tool.cibuildwheel]
 build = "cp312-*"
@@ -47,3 +47,4 @@ skip = "*-musllinux*"
 before-build = "python -m pip install nuitka Pillow PyYAML PyQt5 && python tools/build_binary.py"
 build-verbosity = 1
 test-command = "lyco --help"
+
