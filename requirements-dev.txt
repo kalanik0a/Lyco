@@ -1,0 +1,5 @@
+bandit==1.9.3
+cyclonedx-bom==7.2.1
+pip-audit==2.10.0
+pylint==4.0.4
+safety==3.7.0

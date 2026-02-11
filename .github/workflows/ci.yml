@@ -1,0 +1,96 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  fast:
+    name: Fast CI (Python 3.12, ${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+          python -m pip install -r requirements-dev.txt
+
+      - name: Fast checks
+        if: runner.os != 'Windows'
+        run: make ci-fast
+
+      - name: Fast checks (Windows)
+        if: runner.os == 'Windows'
+        run: |
+          python tools/check_pylint.py
+          python tools/check_audit.py
+          python -m unittest tests.test_suite_core
+
+  full:
+    name: Full CI (Python 3.12, ${{ matrix.os }})
+    if: github.ref == 'refs/heads/main'
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+          python -m pip install -r requirements-dev.txt
+
+      - name: Full checks
+        env:
+          CI_GUARD_ALLOW: "1"
+          RUN_SAFETY: "1"
+          RUN_SEMGREP: "1"
+          RUN_SBOM: "0"
+          SAFETY_API_KEY: ${{ secrets.SAFETY_API_KEY }}
+        if: runner.os != 'Windows'
+        run: make ci-full
+
+      - name: Full checks (Windows)
+        if: runner.os == 'Windows'
+        env:
+          CI_GUARD_ALLOW: "1"
+          RUN_SAFETY: "1"
+          RUN_SEMGREP: "0"
+          RUN_SBOM: "0"
+          SAFETY_API_KEY: ${{ secrets.SAFETY_API_KEY }}
+        run: |
+          python tools/check_pylint.py
+          python tools/check_audit.py
+          python tools/check_vulnerabilities.py
+          python tools/security_checks.py
+          python tools/should_run_sbom.py || python tools/generate_sbom.py
+          python -m unittest tests.test_suite_full
+          python tools/check_secrets.py
+          python tools/ci_record.py
+
+      - name: Upload SBOM
+        uses: actions/upload-artifact@v4
+        with:
+          name: sbom
+          path: sbom/sbom.json

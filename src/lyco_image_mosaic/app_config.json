@@ -1,0 +1,5 @@
+{
+  "module": "lyco_image_mosaic.cli",
+  "callable": "main",
+  "display_name": "Lyco Python Framework - Hello-world"
+}

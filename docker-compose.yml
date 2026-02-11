@@ -1,0 +1,24 @@
+services:
+  ci:
+    image: ${DOCKER_IMAGE:-python:3.12}
+    working_dir: /workspace
+    volumes:
+      - .:/workspace
+    env_file:
+      - .env
+    command: >
+      bash -lc
+      "python3 -m pip install -r requirements.txt -r requirements-dev.txt
+      && python3 tools/run_task.py ci-full"
+  security:
+    image: ${DOCKER_IMAGE:-python:3.12}
+    working_dir: /workspace
+    volumes:
+      - .:/workspace
+    env_file:
+      - .env
+    command: >
+      bash -lc
+      "python3 -m pip install -r requirements.txt -r requirements-dev.txt
+      && python3 tools/security_checks.py
+      && python3 tools/check_vulnerabilities.py"

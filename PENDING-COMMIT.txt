@@ -1,0 +1,95 @@
+﻿feat: expand Lyco framework tooling, packaging, and docs
+
+Summary (per file):
+- .bandit: add bandit config with excludes and skip rules
+- .gitignore: add ignore rules for state, envs, caches, artifacts, SBOM, and secrets
+- .pylintrc: add pylint config with PyQt/PIL allowances and disabled checks
+- .safety-policy.yml: add safety policy baseline
+- .semgrep.yml: add semgrep rules for subprocess shell, yaml.load, and eval
+- AGENT.md: add consolidated project guide, commands, and tooling references
+- CONTEXT.md: add project purpose, entry points, tooling map, and platform caveats
+- DOCS.md: add full usage/install/testing/packaging documentation
+- Lyco.py: replace full CLI/GUI code with wrapper that delegates to src
+- README.md: expand to framework-focused overview, install, usage, and tooling notes
+- TASKS.md: add phased product/engineering roadmap
+- TODO.md: add security/CI/tooling follow-ups and caveats
+- prompts/01_check_comments.md: add CI/CD step prompt for code comments review
+- prompts/02_check_pylint.md: add CI/CD step prompt for pylint checks
+- prompts/03_check_vulnerabilities.md: add CI/CD step prompt for vuln scans
+- prompts/04_check_sbom.md: add CI/CD step prompt for SBOM generation
+- prompts/05_check_tests.md: add CI/CD step prompt for test review coverage
+- prompts/06_run_tests.md: add CI/CD step prompt for running tests
+- prompts/07_validate_tests.md: add CI/CD step prompt for test validation
+- prompts/08_update_versions.md: add CI/CD step prompt for version updates
+- prompts/09_update_package_info.md: add CI/CD step prompt for package metadata
+- prompts/10_update_project_state.md: add CI/CD step prompt for context/state updates
+- prompts/CI_CD_TASKS.md: add CI/CD checklist index
+- pyproject.toml: rename project, raise Python requirement, add extras, setuptools config, and cibuildwheel settings
+- requirements-dev.txt: add pinned dev/security tools
+- requirements.txt: pin runtime dependencies to exact versions
+- src/lyco_image_mosaic/__init__.py: add package init and __all__
+- src/lyco_image_mosaic/__main__.py: add module entry point for python -m
+- src/lyco_image_mosaic/cli.py: move full CLI/GUI implementation into package with expanded docstrings
+- src/lyco_image_mosaic/launcher.py: add binary-first launcher with app_config fallback
+- tests/__init__.py: add test package marker
+- tests/test_cli.py: add CLI/YAML/compose tests
+- tests/test_docs.py: add README/DOCS smoke tests
+- tests/test_launcher.py: add launcher behavior tests
+- tools/build_binary.py: add Nuitka build helper and bundle step
+- tools/check_audit.py: add pip-audit wrapper
+- tools/check_pylint.py: add pylint wrapper
+- tools/check_vulnerabilities.py: add safety scan wrapper with env gating
+- tools/generate_sbom.py: add cyclonedx SBOM generator
+- tools/run_semgrep_docker.ps1: add Docker-based semgrep runner
+- tools/run_semgrep_wsl.ps1: add WSL-based semgrep runner
+- tools/security_checks.py: add combined bandit/pip-audit/safety/semgrep runner
+- .github/workflows/ci.yml: add GitHub Actions CI workflow
+- .gitlab-ci.yml: add GitLab CI pipeline
+- .python-version: pin Python version to 3.12
+- Makefile: add CI, security, test, and WSL/Docker targets
+- TOOLING.md: document env flags, cache, CI guard, WSL/Docker flows
+- docker-compose.yml: add CI/security services for Docker-based runs
+- prompts/11_update_dev_tooling.md: add CI/CD step prompt for tooling sync
+- prompts/12_check_secrets.md: add CI/CD step prompt for secrets scan
+- prompts/13_integration_audit.md: add CI/CD step prompt for repo audit
+- prompts/POST_CI_CD_TASKS.md: add post-CI remediation workflow
+- requirements-semgrep.txt: add semgrep-only pinned requirements
+- requirements.lock: add full frozen dependency lockfile
+- scripts/wsl_install_docker.sh: add WSL Docker install helper
+- scripts/wsl_run_compose.sh: add WSL docker-compose runner
+- src/lyco_image_mosaic/app_config.json: add module/callable swap config
+- tests/README.md: add test suite docs and invocation notes
+- tests/test_ci_local.py: add opt-in local CI tests
+- tests/test_e2e.py: add end-to-end invocation and optional Nuitka build tests
+- tests/test_makefile.py: add Makefile target validation tests
+- tests/test_suite_core.py: add core suite loader
+- tests/test_suite_full.py: add full suite loader
+- tools/check_secrets.py: add secrets scanner
+- tools/ci_guard.py: add CI guard for full runs
+- tools/ci_record.py: add CI run artifact writer
+- tools/clean_artifacts.py: add cleanup script for build/test artifacts
+- tools/docker_probe.py: add Docker availability probe
+- tools/post_ci_cd_report.py: add post-CI remediation report generator
+- tools/run_ci_docker.py: add Docker-based CI runner
+- tools/run_ci_wsl.py: add WSL-based CI runner
+- tools/run_security_docker.py: add Docker-based security runner
+- tools/run_security_wsl.py: add WSL-based security runner
+- tools/run_task.py: add cross-platform task runner
+- tools/run_wsl_docker.py: add Windows-to-WSL docker bridge
+- tools/sbom_inspect.py: add SBOM inspector
+- tools/setup_env.py: add .env generator with OS/CI detection
+- tools/should_run_sbom.py: add SBOM cache check
+- tools/ui_testing.md: add UI testing guidance
+- tools/wsl_probe.py: add WSL availability probe
+- tools/wsl_utils.py: add WSL helper utilities
+- wallpaper-tiled.png: add tiled wallpaper asset
+- wallpaper-tiled2.png: add second tiled wallpaper asset
+
+Tests:
+- python tools/check_pylint.py
+- python tools/check_vulnerabilities.py (skipped: RUN_SAFETY/SAFETY_API_KEY not set)
+- python tools/check_audit.py
+- python tools/security_checks.py (bandit/pip-audit ok; safety/semgrep skipped)
+- python tools/generate_sbom.py
+- python tools/check_secrets.py
+- python -m unittest discover -s tests

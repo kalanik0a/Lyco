@@ -1,0 +1,22 @@
+rules:
+  - id: python-subprocess-shell-true
+    languages: [python]
+    message: "Avoid subprocess calls with shell=True."
+    severity: ERROR
+    patterns:
+      - pattern: subprocess.$FUNC(..., shell=True, ...)
+      - metavariable-regex:
+          metavariable: $FUNC
+          regex: "call|run|Popen|check_output|check_call"
+
+  - id: python-yaml-load-unsafe
+    languages: [python]
+    message: "Use yaml.safe_load instead of yaml.load."
+    severity: ERROR
+    pattern: yaml.load(...)
+
+  - id: python-eval-used
+    languages: [python]
+    message: "Avoid eval; use safer parsing alternatives."
+    severity: WARNING
+    pattern: eval(...)

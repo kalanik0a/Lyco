@@ -1,0 +1,73 @@
+# Project state
+STATE.json
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+.env
+.env/
+.env.*
+
+# Packaging / build artifacts
+build/
+dist/
+*.egg-info/
+*.egg
+pip-wheel-metadata/
+
+# Installer and tooling caches
+.cache/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.nox/
+.tox/
+
+# Coverage / test artifacts
+.coverage
+coverage.xml
+htmlcov/
+
+# Editor artifacts
+.vscode/*.log
+
+# Logs
+*.log
+
+# Local docker state
+.docker/
+
+# VS Code
+.vscode/
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/settings.json
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# SBOM outputs
+sbom/
+build/ci/
+
+# Secrets / keys
+*.pem
+*.key
+*.pfx
+*.p12
+*.crt
+*.cer
+*.csr
+*.kdb
+*.jks
+*.keystore
+*.sqlite
+*.db
+*.secrets.*

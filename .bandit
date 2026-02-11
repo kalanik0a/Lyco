@@ -1,0 +1,12 @@
+exclude:
+  - tests
+  - build
+  - dist
+  - .venv
+  - venv
+  - .nox
+  - .tox
+skips:
+  - B101
+  - B404
+  - B603

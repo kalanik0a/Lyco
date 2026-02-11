@@ -1,14 +1,14 @@
-﻿[build-system]
+[build-system]
 requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "lyco-image-mosaic"
+name = "lyco-python-framework"
 version = "1.0.0"
-description = "Compose and edit image mosaics via YAML with a PyQt GUI."
+description = "Lyco Python Framework (Hello-world: image mosaic via YAML + PyQt GUI)."
 readme = "README.md"
 license = {text = "GNU General Public License v3.0"}
-requires-python = ">=3.10"
+requires-python = ">=3.12"
 dependencies = [
   "Pillow",
   "PyYAML",
@@ -16,4 +16,34 @@ dependencies = [
 ]
 
 [project.scripts]
-lyco = "Lyco:main"
+lyco = "lyco_image_mosaic.launcher:main"
+
+[project.optional-dependencies]
+build = [
+  "build",
+  "cibuildwheel",
+  "nuitka",
+  "twine",
+]
+security = [
+  "bandit",
+  "pip-audit",
+  "safety",
+  "semgrep",
+  "cyclonedx-bom",
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+packages = ["lyco_image_mosaic"]
+include-package-data = true
+
+[tool.setuptools.package-data]
+lyco_image_mosaic = ["bin/*", "app_config.json"]
+
+[tool.cibuildwheel]
+build = "cp312-*"
+skip = "*-musllinux*"
+before-build = "python -m pip install nuitka Pillow PyYAML PyQt5 && python tools/build_binary.py"
+build-verbosity = 1
+test-command = "lyco --help"

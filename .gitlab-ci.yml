@@ -1,0 +1,33 @@
+stages:
+  - test
+
+variables:
+  PIP_DISABLE_PIP_VERSION_CHECK: "1"
+  PIP_NO_CACHE_DIR: "1"
+
+default:
+  image: python:3.12
+  before_script:
+    - python -m pip install --upgrade pip
+    - python -m pip install -r requirements.txt
+    - python -m pip install -r requirements-dev.txt
+
+ci_fast:
+  stage: test
+  script:
+    - make ci-fast
+
+ci_full:
+  stage: test
+  script:
+    - export CI_GUARD_ALLOW=1
+    - export RUN_SAFETY=1
+    - export RUN_SEMGREP=1
+    - export RUN_SBOM=0
+    - make ci-full
+  only:
+    - main
+  artifacts:
+    when: always
+    paths:
+      - sbom/sbom.json
