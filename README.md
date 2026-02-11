@@ -2,21 +2,23 @@
 
 Lyco Python Framework is a boilerplate for building Python desktop tools. It provides a runnable example app (image mosaic) plus a full stack of tooling: CI, security scans, task runner, docs, and AI-assisted maintenance prompts.
 
-**What you get**
-- A working CLI + PyQt GUI example app under `src/lyco/`.
-- Packaging and entry points for `lyco`, module runs, and repo wrapper.
-- CI/CD workflows for GitHub and GitLab.
-- Security tooling (bandit, pip-audit, safety, SBOM, secrets scan).
-- A task runner and Makefile targets for consistent local and CI commands.
-- AI-assistance files to keep project context, prompts, and roadmap aligned.
+## Docs
 
-![Hello-world image mosaic screenshot](img/screenshot.png)
+Documentation lives in `docs/`. Start here:
 
-## Quick Start
-1. Generate `.env` defaults: `python tools/setup_env.py`.
-2. Install runtime deps: `python -m pip install -r requirements.txt`.
-3. Run the example app: `python Lyco.py --help`.
-4. Run tests: `python -m unittest discover -s tests`.
+Docs tree (links):
+- `docs/` (folder)
+- [docs/README.md](docs/README.md)
+- [docs/boilerplate.md](docs/boilerplate.md)
+- [docs/usage.md](docs/usage.md)
+- [docs/extension.md](docs/extension.md)
+- [docs/ai-assistance.md](docs/ai-assistance.md)
+- [docs/ai-assistance-customization.md](docs/ai-assistance-customization.md)
+- [docs/tools-and-scripts.md](docs/tools-and-scripts.md)
+
+Docs for tooling and AI-assistance live under `docs/`:
+- Tooling: `docs/tools-and-scripts.md`
+- AI assistance: `docs/ai-assistance.md`, `docs/ai-assistance-customization.md`
 
 ## Use As Boilerplate
 1. Update `pyproject.toml` (name, description, scripts, dependencies).
@@ -26,6 +28,12 @@ Lyco Python Framework is a boilerplate for building Python desktop tools. It pro
 5. Keep the tooling, CI, and security scaffolding as your foundation.
 
 See `docs/boilerplate.md` and `docs/ai-assistance-customization.md` for the guided workflow.
+
+## Quick Start
+1. Generate `.env` defaults: `python tools/setup_env.py`.
+2. Install runtime deps: `python -m pip install -r requirements.txt`.
+3. Run the example app: `python Lyco.py --help`.
+4. Run tests: `python -m unittest discover -s tests`.
 
 ## Example App (Image Mosaic)
 The bundled Hello-world app composes a transparent wallpaper from a YAML layout file and includes a PyQt GUI editor.
@@ -87,13 +95,6 @@ Optional semgrep tools:
 python -m pip install -r requirements-semgrep.txt
 ```
 
-## Tooling And AI Assistance
-- Task runner: `python tools/run_task.py ci-fast` and `python tools/run_task.py ci-full`.
-- Tooling flags and cache behavior: `TOOLING.md`.
-- AI-assistance files: `AGENT.md`, `CONTEXT.md`, `STATE.json`, `TASKS.md`, `TODO.md`.
-- CI/CD prompts: `prompts/CI_CD_TASKS.md` and `prompts/`.
-- Guides: `docs/` (see `docs/README.md`).
-
 ## Tests
 
 ```powershell
@@ -111,10 +112,6 @@ python -m build
 ```
 
 Nuitka does not support the Windows Store Python distribution. Use Python from python.org for binary builds on Windows.
-
-## Docs
-- Full usage and installation details: `DOCS.md`.
-- Boilerplate and AI-assistance guides: `docs/`.
 
 ## License
 GNU General Public License v3.0. See `LICENSE`.
