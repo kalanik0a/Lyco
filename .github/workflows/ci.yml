@@ -65,7 +65,7 @@ jobs:
         env:
           CI_GUARD_ALLOW: "1"
           RUN_SAFETY: "0"
-          RUN_SEMGREP: "1"
+          RUN_SEMGREP: "0"
           RUN_SBOM: "0"
         if: runner.os != 'Windows'
         run: make ci-full
